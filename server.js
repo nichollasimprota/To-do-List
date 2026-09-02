@@ -1,3 +1,4 @@
+require('./config/db.js');
 //importando o express
 const express = require('express');
 //cria a instancia do express
