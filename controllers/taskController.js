@@ -1,3 +1,4 @@
+//criacao da variavel para importar os modulos necessarios
 const taskModel = require('../models/taskModel');
 
 function listTasks(req, res) {
@@ -15,7 +16,7 @@ function createTask(req, res) {
     if (!titulo) {
         return res.status(400).json({ error: 'O campo "titulo" é obrigatório' });
     }
-
+//chama a função createTask do model para criar uma nova tarefa
     taskModel.createTask(titulo, descricao, (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Erro ao criar tarefa' });
@@ -23,5 +24,5 @@ function createTask(req, res) {
         res.status(201).json({id: results.insertId, titulo, descricao });
     });
 }
-
+//exporta as funções para serem usadas em outros arquivos
 module.exports = {listTasks, createTask};
